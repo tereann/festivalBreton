@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Les Festivals</title>
 </head>
 <body>
+<h1>Les festivals de votre region</h1>
+
+<button id="ajouter" class="button" type="button" onclick="window.location.href='ajouter'">Ajouter un festival</button>
+<table>
+    <thead>
+    <tr>
+        <th>Nom</th>
+        <th>Ville</th>
+        <th>Lieu</th>
+        <th>Debut</th>
+        <th>Fin</th>
+        <th>   </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <tr th:each="festival : ${festivals}">
+        <td> th:text="${festivals.nom}</td>
+        <td> th:text="${festivals.ville}</td>
+        <td> th:text="${festivals.lieu}</td>
+        <td> th:text="${festivals.debut}</td>
+        <td> th:text="${festivals.fin}</td>
+    </tr>
+    </tbody>
+</table>
+
+<div><button><a href="editer">Editer</a></button></div>
+
+
+
 
 </body>
 </html>

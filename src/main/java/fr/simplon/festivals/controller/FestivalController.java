@@ -18,7 +18,6 @@ public class FestivalController {
 /*
     @GetMapping("/")
     public String pageAccueil(Model model) {
-        model.addAttribute("festival", new Festival());
         return "index.html";
     }
 
@@ -43,5 +42,16 @@ public class FestivalController {
         List<Festival> festivals = festivalDao.getAllFestivals();
         model.addAttribute("festivals", festivals);
         return "festivals";
+    }
+
+    @GetMapping("/ajouter")
+    public String ajouterFormulaire(Model model) {
+        model.addAttribute("festival", new Festival());
+        return "ajouter";
+    }
+
+    @GetMapping("/editer")
+    public String editerFormulaire(Model model) {
+        return "editer";
     }
 }
