@@ -10,6 +10,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.util.List;
 
 @Component
@@ -25,10 +26,14 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         if (mFestivalRepository.count() == 0) {
             ClassPathResource resource = new ClassPathResource("static/festivals.json");
-            ObjectMapper objectMapper= new ObjectMapper();
-            List<Festival> festivals = objectMapper.readValue(resource.getInputStream(), new TypeReference<List<Festival>>() {
-            });
-            mFestivalRepository.saveAll(festivals);
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {
+                List<Festival> festivals = objectMapper.readValue(resource.getInputStream(), new TypeReference<List<Festival>>() {
+                });
+                mFestivalRepository.saveAll(festivals);
+            } catch (IOException e) {
+                throw new RuntimeException("Error loading festivals", e);
+            }
         }
     }
 }
