@@ -1,11 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xml:base="ajouter.html">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-  ajouter
+    <title>Ajouter un festival</title>
+
 </head>
 <body>
-
-</body>
+    <h1>Ajouter un festival</h1>
+        <form th:action="@{/ajouterFestival}" th:object="${festival}" method="post">
+            <label>Nom :</label>
+            <input type="text" th:field="*{nom}"/>
+            <br />
+            <label>Ville :</label>
+            <input type="text" th:field="*{ville}"/>
+            <br />
+            <label>Lieu :</label>
+            <input type="text" th:field="*{lieu}"/>
+            <br />
+            <label>Date de debut :</label>
+            <input type="Date" th:field="*{debut}"/>
+            <br />
+            <label>Date de fin :</label>
+            <input type="Date" th:field="*{fin}"/>
+            <br />
+            <label>Latitude :</label>
+            <input type="number" th:field="*{lat}"/>
+            <br />
+            <label>Longitude :</label>
+            <input type="number" th:field="*{lon}"/>
+            <br />
+            <input type="submit" value="Enregistrer"/>
+        </form>
+    </body>
 </html>
