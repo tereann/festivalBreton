@@ -24,13 +24,61 @@ h1 {
     width: 100px;
 }
 
-#ajouter {
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#top-ajouter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+#btn-ajouter {
     background-color: lightgreen;
+    margin: 20px 0;
 
 }
 
 table {
-    border: gray;
-    align: center
+    border-collapse: collapse;
+    margin: 20px auto;
 
 }
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+#btn-edit {
+    border: none;
+}
+
+
+/*  Ajouter Form */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form label {
+    width: 150px; /* set the width of the label */
+    text-align: left; /* align the text to the right */
+    margin-right: 10px; /* add some margin on the right */
+}
+
+.form input[type="text"],
+.form input[type="date"],
+.form input[type="number"] {
+    width: 200px; /* set the width of the input field */
+}
+

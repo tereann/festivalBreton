@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class FestivalDaoImpl implements FestivalDao {
@@ -29,4 +30,12 @@ public class FestivalDaoImpl implements FestivalDao {
     public List<Festival> getAllFestivals(){
         return festivalRepository.findAll();
     }
+
+    @Override
+    public Optional<Festival> getFestivalById(Long id)  {
+        return festivalRepository.findById(id);
+    }
+
+
+
 }

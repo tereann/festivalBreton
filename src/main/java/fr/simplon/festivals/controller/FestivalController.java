@@ -24,13 +24,14 @@ public class FestivalController {
 
 
     @PostMapping("/ajouterFestival")
-    public String enregistrerFestival(@ModelAttribute("festival") Festival festival){
+    public String enregistrerFestival(@ModelAttribute("festival") Festival festival) {
         festivalDao.saveFestival(festival.getNom(), festival.getVille(), festival.getLieu(),
                 festival.getDebut(), festival.getFin(), festival.getLat(), festival.getLon());
         return "redirect:/";
     }
+
     @PostMapping("/submit")
-    public String submitFestival(Model model){
+    public String submitFestival(Model model) {
         return "redirect:/";
     }
 
@@ -45,4 +46,20 @@ public class FestivalController {
     public String editerFormulaire(Model model) {
         return "editer";
     }
+
+   /*@GetMapping("/festivals/{id}/edit")
+    public String showEditForm(@PathVariable("id") Long id, Model model) {
+        Festival festival = festivalDao.getFestivalById(id);
+        model.addAttribute("festival", festival);
+        return "editer";
+
+    }
+
+    @PostMapping("/festivals/save")
+    public String saveFestival(@ModelAttribute("festival") Festival festival) {
+        festivalDao.saveFestival(festival.getNom(), festival.getVille(), festival.getLieu(), festival.getDebut(),
+                festival.getFin(), festival.getLat(), festival.getLon());
+        return "redirect:/festivals";
+    } */
+
 }
