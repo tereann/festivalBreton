@@ -23,13 +23,14 @@
     </thead>
     <tbody>
     <tr>
-    <tr th:each="festival : ${festivals}">
-        <td> th:text="${festivals.nom}</td>
-        <td> th:text="${festivals.ville}</td>
-        <td> th:text="${festivals.lieu}</td>
-        <td> th:text="${festivals.debut}</td>
-        <td> th:text="${festivals.fin}</td>
-    </tr>
+    <tr th:each="festival :${festivals}">
+        <td th:text="${festival.nom}"></td>
+        <td th:text="${festival.ville}"></td>
+        <td th:text="${festival.lieu}"></td>
+        <td th:date="${festival.date}"></td>
+        <td th:date="${festival.fin}"></td>
+        <td th:double="${festival.lat}"></td>
+        <td th:double="${festival.long}"></td>
     </tbody>
 </table>
 

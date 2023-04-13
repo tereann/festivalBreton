@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -43,15 +44,25 @@ public class FestivalController {
         return "festivals";
     }
 
-    @GetMapping("/editer")
-    public String editerFormulaire(Model model) {
+    @GetMapping("/editer/{id}")
+    public String editerFormulaire(@PathVariable Long id, Model model) {
+        Festival festival = festivalDao.findById(id).orElseThrow(() -> new IllegalArgumentException("Festival invalide:" + id));)
         model.addAttribute("festival", new Festival());
         return "editerFestival";
     }
-    @PostMapping("/editerFestival")
-    public String editerFestival(@ModelAttribute("festival") Festival festival){
-        festivalDao.saveFestival(festival.getNom(), festival.getVille(), festival.getLieu(),
-                festival.getDebut(), festival.getFin(), festival.getLat(), festival.getLon());
+    @PostMapping("/editerFestival/{id}")
+    public String editerFestival(@PathVariable Long id, @ModelAttribute("festival") Festival festival){
+        Festival festivalToUpdate = festivalDao.findById(id).orElseThrow(() -> new IllegalArgumentException("Festival invalide:" + id));
+        festivalToUpdate.setNom(festival.getNom());
+        festivalToUpdate.setVille(festival.getVille());
+        festivalToUpdate.setLieu(festival.getLieu());
+        festivalToUpdate.setDebut(festival.getDebut());
+        festivalToUpdate.setFin(festival.getFin());
+        festivalToUpdate.setLat(festival.getLat());
+        festivalToUpdate.setLon(festival.getLon());
+        festivalDao.save(festivalToUpdate);
         return "redirect:/";
     }
+
+ */
 }
