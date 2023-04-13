@@ -15,13 +15,7 @@ import java.util.List;
 public class FestivalController {
     @Autowired
     private FestivalDao festivalDao;
-/*
-    @GetMapping("/")
-    public String pageAccueil(Model model) {
-        return "index.html";
-    }
 
- */
     @GetMapping("/ajouter")
     public String afficherAjouter(Model model) {
         model.addAttribute("festival", new Festival());
@@ -36,18 +30,15 @@ public class FestivalController {
         return "redirect:/";
     }
     @PostMapping("/submit")
+    public String submitFestival(Model model){
+        return "redirect:/";
+    }
 
     @GetMapping("/")
     public String afficherToutLesFestivals(Model model) {
         List<Festival> festivals = festivalDao.getAllFestivals();
         model.addAttribute("festivals", festivals);
-        return "festivals";
-    }
-
-    @GetMapping("/ajouter")
-    public String ajouterFormulaire(Model model) {
-        model.addAttribute("festival", new Festival());
-        return "ajouter";
+        return "index";
     }
 
     @GetMapping("/editer")

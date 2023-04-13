@@ -4,12 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
+
+
     <title>Les Festivals</title>
 </head>
 <body>
 <h1>Les festivals de votre region</h1>
 
+<div id="map"></div>
+
 <button id="ajouter" class="button" type="button" onclick="window.location.href='ajouter'">Ajouter un festival</button>
+
 <table>
     <thead>
     <tr>
@@ -18,25 +23,24 @@
         <th>Lieu</th>
         <th>Debut</th>
         <th>Fin</th>
-        <th>   </th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
-    <tr>
     <tr th:each="festival : ${festivals}">
-        <td> th:text="${festivals.nom}</td>
-        <td> th:text="${festivals.ville}</td>
-        <td> th:text="${festivals.lieu}</td>
-        <td> th:text="${festivals.debut}</td>
-        <td> th:text="${festivals.fin}</td>
+        <td th:text="${festival.nom}">Test fest</td>
+        <td th:text="${festival.ville}">Brest</td>
+        <td th:text="${festival.lieu}">Arena</td>
+        <td th:text="${festival.debut}">10/02/2024</td>
+        <td th:text="${festival.fin}">12/02/2024</td>
+        <td> <button onclick="window.location.href='editer'">Editer</button></td>
     </tr>
     </tbody>
 </table>
 
-<div><button><a href="editer">Editer</a></button></div>
-
-
-
+<script src="script.js"></script>
+<script th:each="festival : ${festivals}" th:object="${festival}" th:inline="javascript">
+</script>
 
 </body>
 </html>
