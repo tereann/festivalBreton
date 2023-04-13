@@ -35,7 +35,6 @@ public class FestivalController {
                 festival.getDebut(), festival.getFin(), festival.getLat(), festival.getLon());
         return "redirect:/";
     }
-    @PostMapping("/submit")
 
     @GetMapping("/")
     public String afficherToutLesFestivals(Model model) {
@@ -44,14 +43,15 @@ public class FestivalController {
         return "festivals";
     }
 
-    @GetMapping("/ajouter")
-    public String ajouterFormulaire(Model model) {
-        model.addAttribute("festival", new Festival());
-        return "ajouter";
-    }
-
     @GetMapping("/editer")
     public String editerFormulaire(Model model) {
-        return "editer";
+        model.addAttribute("festival", new Festival());
+        return "editerFestival";
+    }
+    @PostMapping("/editerFestival")
+    public String editerFestival(@ModelAttribute("festival") Festival festival){
+        festivalDao.saveFestival(festival.getNom(), festival.getVille(), festival.getLieu(),
+                festival.getDebut(), festival.getFin(), festival.getLat(), festival.getLon());
+        return "redirect:/";
     }
 }
