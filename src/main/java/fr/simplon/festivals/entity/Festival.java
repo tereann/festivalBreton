@@ -13,7 +13,7 @@ public class Festival {
     private Long id;
     private String nom;
     private String ville;
-    private String url;
+    //private String url;
     private int cp;
     private String lieu;
     @Temporal(TemporalType.DATE)
@@ -29,13 +29,13 @@ public class Festival {
         return id;
     }
 
-    public String getUrl() {
+    /*public String getUrl() {
         return url;
     }
 
     public void setUrl(String url) {
         this.url = url;
-    }
+    }*/
 
     public void setId(Long id) {
         this.id = id;
