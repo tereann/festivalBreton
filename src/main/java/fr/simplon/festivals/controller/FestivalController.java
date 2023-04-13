@@ -41,28 +41,22 @@ public class FestivalController {
     public String afficherToutLesFestivals(Model model) {
         List<Festival> festivals = festivalDao.getAllFestivals();
         model.addAttribute("festivals", festivals);
-        return "festivals";
+        return "index";
     }
 
-    @GetMapping("/editer/{id}")
-    public String editerFormulaire(@PathVariable Long id, Model model) {
-        Festival festival = festivalDao.findById(id).orElseThrow(() -> new IllegalArgumentException("Festival invalide:" + id));)
-        model.addAttribute("festival", new Festival());
-        return "editerFestival";
+   @GetMapping("/EditerFestival/{id}")
+    public String EditerFestival(@PathVariable("id") Long id, Model model) {
+    model.addAttribute("festival", festivalDao.findById(id));
+    return "EditerFestival";
     }
-    @PostMapping("/editerFestival/{id}")
-    public String editerFestival(@PathVariable Long id, @ModelAttribute("festival") Festival festival){
-        Festival festivalToUpdate = festivalDao.findById(id).orElseThrow(() -> new IllegalArgumentException("Festival invalide:" + id));
-        festivalToUpdate.setNom(festival.getNom());
-        festivalToUpdate.setVille(festival.getVille());
-        festivalToUpdate.setLieu(festival.getLieu());
-        festivalToUpdate.setDebut(festival.getDebut());
-        festivalToUpdate.setFin(festival.getFin());
-        festivalToUpdate.setLat(festival.getLat());
-        festivalToUpdate.setLon(festival.getLon());
-        festivalDao.save(festivalToUpdate);
+
+    @PostMapping("/EditerFestival/{id}")
+    public String EditerFestivalPost(@PathVariable("id") Long id, Festival festival) {
+        festival.setId(id);
+        festivalDao.saveFestival(festival.getNom(), festival.getVille(), festival.getLieu(),
+                festival.getDebut(), festival.getFin(), festival.getLat(), festival.getLon());
         return "redirect:/";
     }
 
- */
+
 }

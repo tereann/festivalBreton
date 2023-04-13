@@ -8,13 +8,14 @@ import org.springframework.stereotype.Repository;
 import java.sql.Date;
 import java.util.List;
 
+
 @Repository
 public class FestivalDaoImpl implements FestivalDao {
     @Autowired
     private FestivalRepository festivalRepository;
 
     @Override
-    public void saveFestival(String nom, String ville, String lieu, Date debut, Date fin, double lat, double lon){
+    public void saveFestival(String nom, String ville, String lieu, Date debut, Date fin, double lat, double lon) {
         Festival festival = new Festival();
         festival.setNom(nom);
         festival.setVille(ville);
@@ -25,8 +26,15 @@ public class FestivalDaoImpl implements FestivalDao {
         festival.setLon(lon);
         festivalRepository.save(festival);
     }
+
     @Override
-    public List<Festival> getAllFestivals(){
+    public List<Festival> getAllFestivals() {
         return festivalRepository.findAll();
     }
+
+    @Override
+    public Festival findById(Long id) {
+        return festivalRepository.findById(id).orElse(null);
+    }
 }
+
