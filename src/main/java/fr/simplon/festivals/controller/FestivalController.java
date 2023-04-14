@@ -61,12 +61,29 @@ public class FestivalController {
         return "editer";
     }
 
-
-
-    @PostMapping("/festivals/save")
+    /* @PostMapping("/festivals/save")
     public String saveFestival(@ModelAttribute("festival") Festival festival) {
         festivalDao.saveFestival(festival.getNom(), festival.getVille(), festival.getLieu(),
                 festival.getDebut(), festival.getFin(), festival.getLat(), festival.getLon());
+        return "redirect:/";
+    } */
+
+    @PostMapping("/festivals/save")
+    public String saveEditFestival(@ModelAttribute("festival") Festival editedFestival) {
+        Optional<Festival> optionalFestival = festivalRepository.findById(editedFestival.getId());
+        Festival festival = optionalFestival.orElseThrow(() -> new IllegalArgumentException("Invalid festival id: " + editedFestival.getId()));
+
+        // update the festival object with the edited data
+        festival.setNom(editedFestival.getNom());
+        festival.setVille(editedFestival.getVille());
+        festival.setLieu(editedFestival.getLieu());
+        festival.setDebut(editedFestival.getDebut());
+        festival.setFin(editedFestival.getFin());
+        //festival.setLat(editedFestival.getLat());
+        //festival.setLon(editedFestival.getLon());
+
+        // save the updated festival object to the database
+        festivalRepository.save(festival);
         return "redirect:/";
     }
 
