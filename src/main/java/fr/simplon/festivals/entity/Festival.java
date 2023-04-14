@@ -5,6 +5,13 @@ import jakarta.persistence.*;
 
 import java.sql.Date;
 
+/**
+
+ An entity class that represents a Festival object and maps it to a database table called "festivals".
+ This class is annotated with @Entity, which marks it as a JPA entity, and @Table, which specifies the name of the database table it maps to.
+ The Festival entity class contains fields representing the properties of a Festival object, as well as getter and setter methods for accessing and modifying those properties.
+ This class can be used with JPA to persist Festival objects to a database and retrieve them later.
+ */
 @Entity
 @Table(name="festivals")
 public class Festival {

@@ -13,8 +13,4 @@ public interface FestivalDao {
     Optional<Festival> getFestivalById(Long id);
 
 
-
-    /* void saveEditFestival(String nom, String ville, String lieu, Date debut, Date fin, double lat, double lon);
-    Optional<Festival> getFestivalById(Long id); */
-
 }

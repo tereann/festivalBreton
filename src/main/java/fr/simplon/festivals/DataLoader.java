@@ -13,6 +13,12 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.List;
 
+/**
+
+ A component that loads initial data into the database upon application startup.
+ Implements the {@link org.springframework.boot.ApplicationRunner} interface to ensure that
+ the data is loaded after the application context has been initialized.
+ */
 @Component
 public class DataLoader implements ApplicationRunner {
     private final FestivalRepository mFestivalRepository;
