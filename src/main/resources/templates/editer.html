@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
+<link rel="stylesheet" th:href="@{/style.css}">
 <head>
-    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <title>Edit Festival</title>
 </head>
@@ -11,24 +11,29 @@
 <h1>Crée un nouveau festival</h1>
 
 <div class="form">
-<form th:action="@{/festivals/save}" th:object="${festival}" method="post">
-    <input type="hidden" th:field="*{id}">
-    <label>Name:</label>
-    <input type="text" th:field="*{nom}">
-    <label>Ville:</label>
-    <input type="text" th:field="*{ville}">
-    <label>Lieu:</label>
-    <input type="text" th:field="*{lieu}">
-    <label>Debut:</label>
-    <input type="date" th:field="*{debut}">
-    <label>Fin:</label>
-    <input type="date" th:field="*{fin}">
-    <!-- <label>Latitude:</label>
-    <input type="text" th:field="*{lat}">
-    <label>Longitude:</label>
-    <input type="text" th:field="*{lon}"> -->
-    <button type="submit" class="btn btn-primary">Save</button>
-</form>
+    <form th:action="@{/festivals/save}" th:object="${festival}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <label>Name:</label>
+        <input type="text" th:field="*{nom}">
+        <br />
+        <label>Ville:</label>
+        <input type="text" th:field="*{ville}">
+        <br />
+        <label>Lieu:</label>
+        <input type="text" th:field="*{lieu}">
+        <br />
+        <label>Debut:</label>
+        <input type="date" th:field="*{debut}">
+        <br />
+        <label>Fin:</label>
+        <input type="date" th:field="*{fin}">
+        <br />
+        <!-- <label>Latitude:</label>
+        <input type="text" th:field="*{lat}">
+        <label>Longitude:</label>
+        <input type="text" th:field="*{lon}"> -->
+        <input type="submit" value="Save"/>
+    </form>
 </div>
 
 </body>
