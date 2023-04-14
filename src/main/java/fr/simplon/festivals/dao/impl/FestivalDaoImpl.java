@@ -35,6 +35,23 @@ public class FestivalDaoImpl implements FestivalDao {
     public Optional<Festival> getFestivalById(Long id)  {
         return festivalRepository.findById(id);
     }
+    /*@Override
+    public void saveEditFestival(Long id, String nom, String ville, String lieu, Date debut, Date fin, double lat, double lon) {
+        Optional<Festival> optionalFestival = festivalRepository.findById(id);
+        if (optionalFestival.isPresent()) {
+            Festival festival = optionalFestival.get();
+            festival.setNom(nom);
+            festival.setVille(ville);
+            festival.setLieu(lieu);
+            festival.setDebut(debut);
+            festival.setFin(fin);
+            festival.setLat(lat);
+            festival.setLon(lon);
+            festivalRepository.save(festival);
+        } else {
+            throw new IllegalArgumentException("Invalid festival id: " + id);
+        }
+    } */
 
 
 

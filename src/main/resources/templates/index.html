@@ -43,11 +43,7 @@
         <td th:text="${festival.debut}">10/02/2024</td>
         <td th:text="${festival.fin}">12/02/2024</td>
         <td>
-            <button onclick="window.location.href='/festivals/' + ${festival.id} + '/edit'">Edit</button>
-
-            <!--<button th:href="@{/festivals/{id}/edit(id=${festival.id})}" class="btn btn-primary">Edit</button> -->
-            <!--<button th:onclick="'javascript:window.location.href=' + \'@{/festivals/{id}/edit(id=${festival.id})}\``" class="btn btn-primary">Edit</button> -->
-            <!-- <div><button id="btn-edit" onclick="window.location.href='editer'">Editer</button></div> -->
+            <button th:onclick="|window.location='/festivals/${festival.id}/edit'|">Edit</button>
         </td>
     </tr>
     </tbody>
@@ -58,6 +54,10 @@
 <script th:each="festival : ${festivals}" th:object="${festival}" th:inline="javascript">
     addMarkerOnMap([[${festival.lat}]], [[${festival.lon}]], [[${festival.nom}]], [[${festival.ville}]]);
 </script>
-
+<script>
+    function visit(url) {
+        window.location.href=url;
+    }
+</script>
 </body>
 </html>
